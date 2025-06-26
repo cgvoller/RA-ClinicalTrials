@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Clinical Trials Submission Form</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; max-width: 800px; }
+    label { display: block; margin-top: 15px; font-weight: bold; }
+    input, textarea, select { width: 100%; padding: 8px; }
+    button { margin-top: 20px; padding: 10px 20px; }
+    table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 6px; }
+    th { background: #f4f4f4; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <h1>Add a Clinical Trial Entry</h1>
+
+  <form id="trialForm">
+    <!-- form fields unchanged -->
+    <!-- ... -->
+    <button type="submit">Submit</button>
+  </form>
+
+  <hr>
+  <h2>Existing Trials Table</h2>
+  <div id="markdown-preview">Loading table...</div>
+
+  <script>
+    document.getElementById('trialForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const formData = new FormData(event.target);
+      const data = {};
+      formData.forEach((value, key) => {
+        data[key] = value.trim();
+      });
+
+      console.log('Submitted Entry:', data);
+      alert("Entry submitted! (Currently only logging to console)");
+      event.target.reset();
+    });
+
+    // Load and render Trials.md
+    fetch('Trials.md')
+      .then(res => res.text())
+      .then(md => {
+        const html = marked.parse(md);
+        document.getElementById('markdown-preview').innerHTML = html;
+      })
+      .catch(err => {
+        document.getElementById('markdown-preview').innerText = "Failed to load markdown.";
+        console.error(err);
+      });
+  </script>
+</body>
+</html>
