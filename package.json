@@ -1,0 +1,9 @@
+{
+  "name": "clinical-trials-form",
+  "version": "1.0.0",
+  "description": "Netlify Function to update Trials.md",
+  "main": "index.js",
+  "dependencies": {
+    "@octokit/rest": "^20.0.0"
+  }
+}
