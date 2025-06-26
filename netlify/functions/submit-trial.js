@@ -26,8 +26,8 @@ exports.handler = async function(event) {
 
   const octokit = new Octokit({ auth: token });
 
-  const owner = "YOUR_GITHUB_USERNAME";
-  const repo = "YOUR_REPO_NAME";
+  const owner = "cgvoller";
+  const repo = "RA-ClinicalTrials";
   const path = "Trials.md";
 
   try {
